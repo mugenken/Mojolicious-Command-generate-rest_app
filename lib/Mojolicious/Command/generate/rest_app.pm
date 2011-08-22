@@ -1,4 +1,4 @@
-package Mojo::Command::generate::rest_app;
+package Mojolicious::Command::generate::rest_app;
 use Mojo::Base 'Mojo::Command';
 
 # ABSTRACT: Generate a Psuedo-RESTful Mojolicious/DBIx::Class Application
