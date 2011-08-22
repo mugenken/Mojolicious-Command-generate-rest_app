@@ -3,5 +3,5 @@
 .build
 .build/*
 eg/*
-Mojolicious-Command-Generate-RestApp-*
-Mojolicious-Command-Generate-RestApp-*/*
+Mojo-Command-Generate-RestApp-*
+Mojo-Command-Generate-RestApp-*/*

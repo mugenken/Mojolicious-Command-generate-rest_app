@@ -1,4 +1,4 @@
-package Mojolicious::Command::Generate::RestApp;
+package Mojo::Command::Generate::RestApp;
 use Mojo::Base 'Mojo::Command';
 
 # ABSTRACT: Generate a Psuedo-RESTful Mojolicious/DBIx::Class Application
@@ -16,12 +16,12 @@ use DBIx::Class::Schema::Loader qw/ make_schema_at /;
 
 =head1 DESCRIPTION
 
-Mojolicious::Command::Generate::RestApp is a Mojolicious application generator
+Mojo::Command::Generate::RestApp is a Mojolicious application generator
 that uses L<DBIx::Class> to generate CRUD scaffolding. 
 
-    use Mojolicious::Command::Generate::RestApp;
+    use Mojo::Command::Generate::RestApp;
  
-    my $app = Mojolicious::Command::Generate::RestApp->new;
+    my $app = Mojo::Command::Generate::RestApp->new;
     $app->run(@ARGV);
 
 =cut
@@ -138,7 +138,7 @@ EOF
     $self->render_to_rel_file( 'static', "$name/public/index.html" );
 }
 
-1;    # End of Mojolicious::Command::Generate::RestApp
+1;    # End of Mojo::Command::Generate::RestApp
 
 __DATA__
 
