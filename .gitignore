@@ -1,0 +1,7 @@
+*.kpf
+*.tar.gz
+.build
+.build/*
+eg/*
+Mojolicious-Command-Generate-RestApp-*
+Mojolicious-Command-Generate-RestApp-*/*
