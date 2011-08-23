@@ -24,7 +24,7 @@ my %WriteMakefileArgs = (
     'DBIx::Class::Schema::Loader' => '0',
     'Mojolicious' => '1.87'
   },
-  'VERSION' => '0.112340',
+  'VERSION' => '0.112350',
   'test' => {
     'TESTS' => 't/*.t'
   }

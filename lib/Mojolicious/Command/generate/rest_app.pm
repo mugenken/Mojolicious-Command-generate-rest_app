@@ -210,7 +210,7 @@ sub startup {
   my $r = $self->routes;
   $r->add_shortcut(controller => sub {
     my ($r, $class) = @_;
-    my @n = ('namespace', 'Api::Controller');
+    my @n = ('namespace', '<%= $class %>::Controller');
     my $p = Mojolicious::Commands->class_to_file($class);
     my $from = $r->bridge("/$p")->to( @n, action => $p );
     push @n, 'controller', $class;
