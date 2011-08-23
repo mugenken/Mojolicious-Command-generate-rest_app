@@ -208,34 +208,22 @@ sub startup {
 
   # Controller Access
   my $r = $self->routes;
-  $r->namespace('<%= $class %>::Controller');
-  
-  # index route
-  $r->route('/')
-    ->to(namespace => '<%= $class %>', controller => 'Controller',
-        action => 'index');
+  $r->add_shortcut(controller => sub {
+    my ($r, $class) = @_;
+    my @n = ('namespace', 'Api::Controller');
+    my $p = Mojolicious::Commands->class_to_file($class);
+    my $from = $r->bridge("/$p")->to( @n, action => $p );
+    push @n, 'controller', $class;
+       $from->route('/new')->to(@n, action => "create");
+       $from->route('/list')->to(@n, action => "read");
+       $from->route('/edit')->to(@n, action => "update");
+       $from->route('/delete')->to(@n, action => "delete");
+    return $from;
+  });
   <% foreach my $route (sort keys %{$routes}) { %>
-  # begin routes for <%= $route %>
-  my $<%= $route %> = $r->bridge('/<%= $route %>')
-    ->to(namespace => '<%= $class %>::Controller', action => '<%= $route %>');
-  
-  $<%= $route %>->route('/new')->to(
-    controller => '<%= $routes->{$route}->{class} %>',
-    action => 'create'
-  );
-  $<%= $route %>->route('/list')->to(
-    controller => '<%= $routes->{$route}->{class} %>',
-    action => 'read'
-  );
-  $<%= $route %>->route('/edit')->to(
-    controller => '<%= $routes->{$route}->{class} %>',
-    action => 'update'
-  );
-  $<%= $route %>->route('/delete')->to(
-    controller => '<%= $routes->{$route}->{class} %>',
-    action => 'delete'
-  );
+  $r->controller('<%= $routes->{$route}->{class} %>');
   <% } %>
+  $r->route('/')->to('controller#index');
   
 }
 
